@@ -9,6 +9,7 @@
 #include <stdio.h>
 
 #include "main.h"
+#include "sensor.h"
 
 #include "rl_net.h"                     // Keil.MDK-Pro::Network:CORE
 
@@ -110,6 +111,14 @@ static __NO_RETURN void Display (void *arg) {
   GLCD_DrawString ( x    *16U, 5U*24U, buf);
   sprintf (buf, "%s", ip_ascii+16);
   GLCD_DrawString ((x+10U)*16U, 6U*24U, buf);
+	
+	TC74_Initialize();
+	
+	while (1) {
+	sprintf (buf, "temp%16d", TC74_read());
+	GLCD_DrawString (x*16U, 9U*24U, buf);
+	osDelay(1000);
+	}
 
   while(1) {
     /* Wait for signal from DHCP */

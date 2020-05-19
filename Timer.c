@@ -32,7 +32,7 @@ static void Timer2_Callback (void const *arg) {
 //	if (timer_cnt & 1) 
 //		LED_On (0); 
 //	else LED_Off(0);
-	Temp_Read(&Temperatuur);
+	//Temp_Read(&Temperatuur);
 }
  
 // Example: Create and Start timers
